@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jetsetter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Jetsetter</h1>
+
+
+  <div class="panel">
+    <div class="row">
+      <input type="number" id="amount" value="1" />
+
+      <select id="baseCurrency"></select>
+
+      <select id="targetCurrencies" multiple></select>
+    </div>
+
+    <p id="lastUpdated"></p>
+  </div>
+
+
+  <div id="results" class="results-panel"></div>
+
+  <p id="loading" style="display:none;">Fetching live rates...</p>
+</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
