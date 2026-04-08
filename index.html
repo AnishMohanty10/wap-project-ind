@@ -8,26 +8,68 @@
 </head>
 <body>
 
-<div class="container">
-  <h1>Jetsetter</h1>
+<div class="container fade-in">
+  <div class="header-container">
+    <div class="header">
+      <h1>Jetsetter</h1>
+      <p class="subtitle">Global Currency Converter</p>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="icon">🌙</span>
+    </button>
+  </div>
 
+  <div class="panel glass-effect">
+    <div class="row inputs-row">
+      <div class="input-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" value="1" min="0" step="any" placeholder="0.00" />
+      </div>
 
-  <div class="panel">
-    <div class="row">
-      <input type="number" id="amount" value="1" />
+      <div class="input-group">
+        <label for="baseCurrency">From</label>
+        <div class="select-wrapper">
+          <select id="baseCurrency"></select>
+          <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
 
-      <select id="baseCurrency"></select>
-
-      <select id="targetCurrencies" multiple></select>
     </div>
 
     <p id="lastUpdated"></p>
   </div>
 
+  <div id="loading" class="hidden">
+    <div class="spinner"></div>
+    <p>Fetching real-time rates...</p>
+  </div>
+
+  <div class="controls-panel" id="controlsPanel">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search by name or code (e.g. Euro, USD)..." autocomplete="off" />
+    </div>
+    <div class="filters-sort-row">
+      <div class="filter-group">
+        <button class="filter-btn" data-filter="top">Top Currencies</button>
+        <button class="filter-btn active" data-filter="all">All Currencies</button>
+      </div>
+      <div class="sort-group">
+        <div class="select-wrapper">
+          <select id="sortSelect">
+            <option value="code-asc">Sort: A-Z</option>
+            <option value="value-desc">Sort: Value (High to Low)</option>
+            <option value="value-asc">Sort: Value (Low to High)</option>
+          </select>
+          <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="results" class="results-panel"></div>
-
-  <p id="loading" style="display:none;">Fetching live rates...</p>
 </div>
 
   <script src="app.js"></script>
